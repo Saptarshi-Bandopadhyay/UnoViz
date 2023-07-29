@@ -6,8 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
-# Distribution / packaging
+# specific to this project
 lfw_funneled/
+model_check.ipynb
+
+# Distribution / packaging
 .Python
 build/
 develop-eggs/
