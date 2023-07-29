@@ -1,10 +1,8 @@
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
-from keras.utils import image_dataset_from_directory
 import tensorflow as tf
 import cv2 as cv
 import os
-import shutil
 
 Model = load_model(".\\artifacts\siamese_network", compile=False)
 embedding = Model.layers[3]
@@ -20,11 +18,16 @@ def preprocess_file(file_path):
     return image
 
 
-Saptarshi = embedding.predict(
-    preprocess_file(".artifacts/faces/Saptarshi.jpg"))
-Shubhradeep = embedding.predict(
-    preprocess_file(".artifacts/faces/Shubhradeep.jpg"))
-Trijeta = embedding.predict(preprocess_file(".artifacts/faces/Trijeta.jpg"))
+def get_face_embeddings():
+    people = []
+    faces_path = "./artifacts/faces/"
+    for person in os.listdir(faces_path):
+        people.append(embedding.predict(
+            preprocess_file(os.path.join(faces_path, person))))
+    return people
+
+
+people = get_face_embeddings()
 
 
 def preprocess_image(image):
@@ -38,9 +41,8 @@ def who(face):
     face = preprocess_image(face)
     pred = embedding.predict(face, verbose=0)
     distance = []
-    distance.append(np.sum(np.square(pred-Saptarshi), axis=-1))
-    distance.append(np.sum(np.square(pred-Shubhradeep), axis=-1))
-    distance.append(np.sum(np.square(pred-Trijeta), axis=-1))
+    for individual in people:
+        distance.append(np.sum(np.square(pred-individual), axis=-1))
     name = ["Saptarshi", "Shubhradeep", "Trijeta", "Unknown"]
     if np.min(distance) > 1.8:
         return name[3]
