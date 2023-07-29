@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-artifacts/
+lfw_funneled/
 .Python
 build/
 develop-eggs/
