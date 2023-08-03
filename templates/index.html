@@ -10,9 +10,26 @@
 </head>
 
 <body>
-    <img src="{{url_for('video')}}" alt="" srcset="">
-    <br>
-    </form>
+    <div class="parent">
+        <div class="images">
+            {% for name in names %}
+            <img src="./artifacts/faces/{{ name }}.jpg" alt={{name}} class="img">
+            <p>{{name}}</p>
+            {% endfor %}
+        </div>
+        <div class="video">
+            <img src="{{url_for('video')}}" alt="" srcset="">
+            <br>
+            <h3>Add faces for recognition - </h3>
+            <div>
+                <form action="{{url_for('upload')}}" method=post enctype=multipart/form-data id="form">
+                    <input type=file name=file>
+                    <input type=submit value=Upload>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

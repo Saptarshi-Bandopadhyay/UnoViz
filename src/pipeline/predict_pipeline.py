@@ -4,10 +4,10 @@ import tensorflow as tf
 import cv2 as cv
 import os
 
-Model = load_model(".\\artifacts\siamese_network", compile=False)
+Model = load_model("./artifacts/siamese_network", compile=False)
 embedding = Model.layers[3]
 net = cv.dnn.readNetFromCaffe(
-    ".\\artifacts\deploy.prototxt.txt", ".\\artifacts\\res10_300x300_ssd_iter_140000.caffemodel")
+    "./artifacts/deploy.prototxt.txt", "./artifacts/res10_300x300_ssd_iter_140000.caffemodel")
 
 
 def preprocess_file(file_path):
@@ -28,6 +28,8 @@ def get_face_embeddings():
 
 
 people = get_face_embeddings()
+names = [name.split('.', 1)[0]
+         for name in os.listdir("./artifacts/faces/")] + ["Unknown"]
 
 
 def preprocess_image(image):
@@ -43,7 +45,6 @@ def who(face):
     distance = []
     for individual in people:
         distance.append(np.sum(np.square(pred-individual), axis=-1))
-    name = ["Saptarshi", "Shubhradeep", "Trijeta", "Unknown"]
     if np.min(distance) > 1.8:
-        return name[3]
-    return name[np.argmin(distance)]
+        return names[-1]
+    return names[np.argmin(distance)]
