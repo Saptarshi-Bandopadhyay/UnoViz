@@ -56,12 +56,12 @@ depending upon the python version.
 
 Or the model can be trained again with some tinkering or modification.
 
-Images with faces can be added using the file upload option for recognition.
-The name for the images should be in the format "name.jpg"
+For recognition of faces other than the ones already given( imgs of me and some peers :)  ), images with faces can be added using the file upload option in the website.
+The name for the images should be in the format "name.jpg".
 
 ## Data preparation
 The siamese network has been trained on the lfw-dataset for achieving one-shot learning. 
-The lfw-dataset has not been included in this repository due to size constraints. It can be added to the artifacts directory if the model is going to be trained again
+The lfw-dataset has not been included in this repository due to size constraints. It can be added to the artifacts directory if the model is going to be trained again.
 
 ## Model architecture
 Will be added soon
