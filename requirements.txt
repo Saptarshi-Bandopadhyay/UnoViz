@@ -1,4 +1,5 @@
-tensorflow
+tensorflow==2.15.0
 matplotlib
 opencv-python
 numpy
+flask
