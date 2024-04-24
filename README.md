@@ -2,7 +2,7 @@
 
 <!-- ![Project Image](project_image.png) Replace with your project image if applicable -->
 
-This is a face recognition project that utilizes Siamese Network architecture and Triplet Loss to perform accurate and robust face recognition tasks. Face detection is done by the dnn module present in opencv. The Siamese Network enables us to learn a feature representation for faces and compare the similarity between two face images efficiently. The Triplet Loss function aids in training the network to enforce that the distance between an anchor face and a positive face (same identity) is smaller than the distance between the anchor and a negative face (different identity).
+This is a face recognition project that utilizes Siamese Network architecture and Triplet Loss to perform accurate and robust face recognition tasks. Face detection is done by the dnn module present in opencv and the ResNet34 architecture is used for the image embedding. The Siamese Network enables us to learn a feature representation for faces and compare the similarity between two face images efficiently. The Triplet Loss function aids in training the network to enforce that the distance between an anchor face and a positive face (same identity) is smaller than the distance between the anchor and a negative face (different identity).
 
 ## Features
 
@@ -15,8 +15,6 @@ This is a face recognition project that utilizes Siamese Network architecture an
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Data preparation](#data-preparation)
-- [Training and Evaluation](#training-and-evaluation)
-- [Examples](#examples)
 
 ## Getting Started
 
@@ -63,13 +61,3 @@ The name for the images should be in the format "name.jpg".
 The siamese network has been trained on the lfw-dataset for achieving one-shot learning. 
 The lfw-dataset has not been included in this repository due to size constraints. It can be added to the artifacts directory if the model is going to be trained again.
 
-## Model architecture
-Will be added soon
-
-## Training and Evaluation
-Will be added soon
-
-## Examples
-Will be added soon
-
-## This is an ongoing project, hence will be modified frequently.
